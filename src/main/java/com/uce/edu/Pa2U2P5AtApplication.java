@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.uce.edu;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
