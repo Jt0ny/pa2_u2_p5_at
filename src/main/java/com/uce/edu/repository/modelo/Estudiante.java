@@ -1,5 +1,6 @@
 package com.uce.edu.repository.modelo;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -30,7 +31,7 @@ public class Estudiante {
 	private String cedula;
 	
 	@Column(name = "estu_fecha_nacimiento")
-	private LocalDateTime fechaNacimiento;
+	private LocalDate fechaNacimiento;
 
 	@Override
 	public String toString() {
@@ -70,11 +71,11 @@ public class Estudiante {
 		this.cedula = cedula;
 	}
 
-	public LocalDateTime getFechaNacimiento() {
+	public LocalDate getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
-	public void setFechaNacimiento(LocalDateTime fechaNacimiento) {
+	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	
