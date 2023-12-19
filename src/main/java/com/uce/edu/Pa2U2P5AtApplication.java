@@ -1,5 +1,6 @@
 package com.uce.edu;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,18 +9,22 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.uce.edu.repository.modelo.Alumno;
+import com.uce.edu.repository.modelo.Ciudadano;
+import com.uce.edu.repository.modelo.Empleado;
 import com.uce.edu.repository.modelo.Estudiante;
 import com.uce.edu.service.IAlumnoService;
+import com.uce.edu.service.ICiudadanoService;
+import com.uce.edu.service.IEmpleadoService;
 import com.uce.edu.service.IEstudianteService;
 
 @SpringBootApplication
 public class Pa2U2P5AtApplication implements CommandLineRunner{
 	
 	@Autowired
-	private IEstudianteService estudianteService;
+	private IEmpleadoService empleadoService;
 
 	@Autowired
-	private IAlumnoService alumnoService;
+	private ICiudadanoService ciudadanoService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U2P5AtApplication.class, args);
@@ -28,54 +33,21 @@ public class Pa2U2P5AtApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
+		Ciudadano c1= new Ciudadano();
+		c1.setNombre("Anthony");
+		c1.setApellido("Tipan");
+		//this.ciudadanoService.guardar(c1);
 		
-//	//   >>>>>>>>>>>>>>>>>>>>>>>>>>>ESTUDIANTE 
-//			//CREAR
-//			Estudiante E1= new Estudiante();
-//			E1.setNombre("Anthony");
-//			E1.setApellido("Tipan");
-//			E1.setCedula("123");
-//			E1.setFechaNacimiento(LocalDate.of(2001, 8, 01));
-//			this.estudianteService.guardar(E1);
-//			System.out.println(E1);
-//
-////			//ACTUALIZAR
-//			Estudiante E2 = this.estudianteService.buscar(1);
-//			E2.setNombre("Joel");
-//			this.estudianteService.actualizar(E2);
-//			System.out.println(E2);
-////			
-////			//BUSCRA
-//			System.out.println(this.estudianteService.buscar(1));
-////			
-////			//ELIMINAR
-//			this.estudianteService.eliminar(1);
-
-
-
-		//   >>>>>>>>>>>>>>>>>>>>>>>>>>>ALUMNO 
-			//CREAR
-			Alumno a1= new Alumno();
-			a1.setNombre("Luis");
-			this.alumnoService.guardar(a1);
-			System.out.println(a1);
-
-			Alumno a3= new Alumno();
-			a3.setNombre("UWU");
-			this.alumnoService.guardar(a3);
-
-			//BUSCAR
-			System.out.println(this.alumnoService.buscar(1));
-
-			//ACTUALIZAR
-			Alumno a2 = this.alumnoService.buscar(1);
-			a2.setNombre("jorge");
-			this.alumnoService.actualizar(a2);
-
-			//ELIMINAR
-			this.alumnoService.eliminar(2);
-
-
+		Ciudadano c2=this.ciudadanoService.buscarPorID(1);
+		System.out.println(c2);
+		
+		Empleado e1= new Empleado();
+		e1.setFechaIngreso(LocalDate.now());
+		e1.setSalario(new BigDecimal(450));
+		e1.setCiudadano(c2);
+		this.empleadoService.guardar(e1);
+		
+	
 		
 	}
 
