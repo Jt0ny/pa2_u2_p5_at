@@ -7,5 +7,9 @@ public interface ICiudadanoRepository {
 	public void insertar (Ciudadano ciudadano );
 	
 	public Ciudadano seleccionar(Integer id );
+	
+	public void actualizar (Ciudadano ciudadano);
+	
+	public void borrar (Integer id);
 
 }

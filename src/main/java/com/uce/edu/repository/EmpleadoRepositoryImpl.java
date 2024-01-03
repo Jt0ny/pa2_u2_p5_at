@@ -22,4 +22,23 @@ public class EmpleadoRepositoryImpl implements IEmpleadoRepository {
 		
 	}
 
+	@Override
+	public Empleado seleccionarPorId(Integer id) {
+		
+		return this.entityManager.find(Empleado.class, id);
+	}
+
+	@Override
+	public void actualizar(Empleado empleado) {
+		this.entityManager.merge(empleado);
+		
+	}
+
+	@Override
+	public void borrar(Integer id) {
+		Empleado empl=this.seleccionarPorId(id);
+		this.entityManager.remove(empl);
+		
+	}
+
 }
