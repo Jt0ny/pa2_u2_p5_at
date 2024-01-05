@@ -6,4 +6,11 @@ public interface IHotelService {
 	
 	public void guardarHotel(Hotel hotel);
 
+	public Hotel buscarPorId (Integer id);
+
+	public void actualizar(Hotel hotel);
+	
+	public void eliminar(Integer id);
+
+
 }

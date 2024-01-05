@@ -2,7 +2,7 @@ package com.uce.edu.repository;
 
 import org.springframework.stereotype.Repository;
 
-import com.uce.edu.repository.modelo.Hotel;
+import com.uce.edu.repository.modelo.Habitacion;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -10,26 +10,26 @@ import jakarta.transaction.Transactional;
 
 @Repository
 @Transactional
-public class HotelRepositoryImpl implements IHotelRepository{
+public class HabitacioneRepositoryImpl implements IHabitacioneRepository{
 
 	@PersistenceContext
 	private EntityManager entityManager;
 	
 	@Override
-	public Hotel seleccionar(Integer id) {
-		
-		return this.entityManager.find(Hotel.class, id);
+	public Habitacion seleccionar(Integer id) {
+	
+		return this.entityManager.find(Habitacion.class,id);
 	}
 
 	@Override
-	public void insertar(Hotel hotel) {
-		this.entityManager.persist(hotel);
+	public void insertar(Habitacion habitacion) {
+		this.entityManager.persist(habitacion);
 		
 	}
 
 	@Override
-	public void actualizar(Hotel hotel) {
-		this.entityManager.merge(hotel);
+	public void actualizar(Habitacion habitacion) {
+		this.entityManager.merge(habitacion);
 		
 	}
 
@@ -38,6 +38,5 @@ public class HotelRepositoryImpl implements IHotelRepository{
 		this.entityManager.remove(id);
 		
 	}
-	
 
 }

@@ -18,4 +18,22 @@ public class HotelServiceImpl implements IHotelService{
 		
 	}
 
+	@Override
+	public Hotel buscarPorId(Integer id) {
+		
+		return this.hotelRepository.seleccionar(id);
+	}
+
+	@Override
+	public void actualizar(Hotel hotel) {
+		this.hotelRepository.actualizar(hotel);
+		
+	}
+
+	@Override
+	public void eliminar(Integer id) {
+		this.hotelRepository.eliminar(id);
+		
+	}
+
 }
