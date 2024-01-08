@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.uce.edu.repository.modelo.Autor;
 import com.uce.edu.repository.modelo.Libro;
+import com.uce.edu.service.IAutorService;
 import com.uce.edu.service.ILibroService;
 
 
@@ -19,6 +20,9 @@ public class Pa2U2P5AtApplication implements CommandLineRunner{
 	
 	@Autowired
 	private ILibroService iLibroService;
+	
+	@Autowired
+	private IAutorService autorService;
 	
 	
 	
@@ -57,6 +61,33 @@ public class Pa2U2P5AtApplication implements CommandLineRunner{
 		
 		this.iLibroService.guardar(l1);
 		
+		//Autor con varios libros
+		
+		Autor autor= new Autor();
+		autor.setNacionalidad("Ecuatoriano");
+		autor.setNombre("Jose");
+		
+		Libro libro1= new Libro();
+		libro1.setFechaPublicacion(LocalDate.now());
+		libro1.setTitulo("Mafalda");
+		
+		Libro libro2 = new Libro();
+		libro2.setFechaPublicacion(LocalDate.now());
+		libro2.setTitulo("Odisea");
+		
+		Set<Libro> libros2 = new HashSet<Libro>();
+		libros2.add(libro1);
+		libros2.add(libro1);
+		
+		autor.setLibros(libros2);
+		
+		Set<Autor> autores2=   new HashSet<Autor>();
+		autores2.add(autor);
+		
+		libro1.setAutores(autores2);
+		libro2.setAutores(autores2);
+		
+		this.autorService.guardar(autor);
 		
 		
 	}

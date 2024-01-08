@@ -13,8 +13,8 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
-@Entity
-@Table(name="autor2")
+//@Entity
+//@Table(name="autor2")
 public class Autor2 {
 
 	@Id

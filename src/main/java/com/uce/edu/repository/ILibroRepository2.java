@@ -2,7 +2,7 @@ package com.uce.edu.repository;
 
 import com.uce.edu.repository.modelo.Libro;
 
-public interface ILibroRepository {
+public interface ILibroRepository2 {
 	
 	public void insertar (Libro libro);
 	

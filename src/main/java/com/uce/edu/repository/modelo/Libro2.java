@@ -16,8 +16,8 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
-@Entity
-@Table(name="libro2")
+//@Entity
+//@Table(name="libro2")
 public class Libro2 {
 
 	@Id
