@@ -13,11 +13,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
-//@Entity
-//@Table(name="libro2")
+@Entity
+@Table(name="libro2")
 public class Libro2 {
 
 	@Id
@@ -32,7 +33,7 @@ public class Libro2 {
 	@Column(name="libr_fecha_publicacion")
 	private LocalDate fechaPublicacion;
 	
-	
+	@OneToMany(mappedBy = "libro2",cascade = CascadeType.ALL)
 	private List<AutorLibro> autoresLibros;
 
 	
@@ -66,6 +67,10 @@ public class Libro2 {
 		this.fechaPublicacion = fechaPublicacion;
 	}
 	
-	
-	
+	public List<AutorLibro> getAutoresLibros() {
+		return autoresLibros;
+	}
+	public void setAutoresLibros(List<AutorLibro> autoresLibros) {
+		this.autoresLibros = autoresLibros;
+	}
 }
