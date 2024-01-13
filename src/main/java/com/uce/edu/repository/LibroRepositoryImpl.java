@@ -1,5 +1,8 @@
 package com.uce.edu.repository;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.uce.edu.repository.modelo.Libro;
@@ -47,14 +50,61 @@ public class LibroRepositoryImpl implements ILibroRepository{
 		this.entityManager.persist(libro2);
 		
 	}
-
+	
+	//Query
+	
 	@Override
 	public Libro seleccionarPorNombre(String titulo) {
 		//sql= Select * from libro l where l.libr_titulo=?
 		//jpql= select l from Libro l where l.titulo=:variable
-		Query query=this.entityManager.createQuery("Select l from Libro l where l.titulo=:variable");
+		Query query=this.entityManager.createQuery("Select l from Libro l where l.titulo=:variable");//SQL1
 		query.setParameter("variable", titulo);
-		return (Libro) query.getSingleResult();
+		return (Libro) query.getResultList().get(0);
+		//return (Libro) query.getSingleResult();
 	}
+
+	@Override
+	public List<Libro> seleccionarPorFechaPublicacion(LocalDate fechaPublicacion) {
+		//SQL: select * from libro l where l.libr_fecha_publicacion >=?
+		//JPQL: select l from Libro l where l.fechaPublicacion >=:fecha
+		Query myQuery= this.entityManager.createQuery("select l from Libro l where l.fechaPublicacion >=:fecha");
+		myQuery.setParameter("fecha", fechaPublicacion);
+		return (List<Libro>)myQuery.getResultList();
+	}
+
+	//TypedQuery
+	@Override
+	public Libro seleccionarPorTitulo(String titulo) {
+		
+		TypedQuery<Libro>query=this.entityManager.createQuery("Select l from Libro l where l.titulo=:titulo", Libro.class);
+		query.setParameter("titulo", titulo);
+		return query.getSingleResult();
+	}
+
+	@Override
+	public List<Libro> seleccionarPorFecha(LocalDate fechaPublicacion) {
+		TypedQuery<Libro> query=this.entityManager.createQuery("select l from Libro l where l.fechaPublicacion >=:fecha",Libro.class);
+		query.setParameter("fecha", fechaPublicacion);
+		return query.getResultList()
+				;
+	}
+
+	//NamedQuery
+	@Override
+	public Libro seleccionarPorTituloNamed(String titulo) {
+		TypedQuery<Libro>query=this.entityManager.createNamedQuery("Libro.queryBuscarPorTitulo",Libro.class);
+		query.setParameter("titulo", titulo);
+		return query.getSingleResult()
+				;
+	}
+
+	@Override
+	public List<Libro> seleccionarPorFechaNamed(LocalDate fechaPublicacion) {
+		TypedQuery<Libro>query=this.entityManager.createNamedQuery("Libro.queryBuscarPorFecha",Libro.class);
+		query.setParameter("fecha", fechaPublicacion);
+		return query.getResultList();
+	}
+
+
 
 }

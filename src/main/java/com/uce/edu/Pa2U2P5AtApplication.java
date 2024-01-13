@@ -23,6 +23,14 @@ import com.uce.edu.service.ILibroService;
 @SpringBootApplication
 public class Pa2U2P5AtApplication implements CommandLineRunner{
 	
+	
+	//1.Query(JPQL)
+	//1.1 TypedQuery
+	//1.2 NamedQuery
+	
+	//2.Native query
+	//3.Criterial API Query
+	
 	@Autowired
 	private ILibroService iLibroService;
 	
@@ -37,9 +45,32 @@ public class Pa2U2P5AtApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
+		System.out.println("Query");
+		List<Libro>libros=this.iLibroService.buscarPorFecha(LocalDate.of(2024, 01, 8));
+		for(Libro libro:libros) {
+			System.out.println(libro);
+		}
 		
+		System.out.println("TypedQuery");
 		
-		Libro2 l1=new Libro2();
+		Libro libro=this.iLibroService.buscarPorTitulo("Mafalda");
+		System.out.println(libro);
+		
+		List<Libro>libros2=this.iLibroService.buscarPorFechaPubli(LocalDate.of(2024, 01, 8));
+		for(Libro libroo:libros2) {
+			System.out.println(libroo);
+		}
+		
+		System.out.println("NamedQuery");
+		Libro libro2=this.iLibroService.buscarPorTituloNamed("Mafalda");
+		System.out.println( libro2);
+		
+		List<Libro>libros3=this.iLibroService.buscarPorFechaNamed(LocalDate.of(2024, 01, 8));
+		for(Libro libroo:libros3) {
+			System.out.println(libroo);
+		}
+		
+		/*Libro2 l1=new Libro2();
 		l1.setFechaPublicacion(LocalDate.now());
 		l1.setTitulo("JAVA");
 		
@@ -73,7 +104,7 @@ public class Pa2U2P5AtApplication implements CommandLineRunner{
 		//this.iLibroService.guardar2(l1);
 		
 		Libro libro=this.iLibroService.buscarPorNombre("Mafalda");
-		System.out.println(libro);
+		System.out.println(libro);*/
 		
 		
 	}
