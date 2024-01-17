@@ -12,4 +12,5 @@ public interface IEmpleadoRepository {
 	public void actualizar(Empleado empleado);
 	
 	public void borrar(Integer id);
-}
+	
+	}
