@@ -1,5 +1,7 @@
 package com.uce.edu.service;
 
+import java.util.List;
+
 import com.uce.edu.repository.modelo.Ciudadano;
 import com.uce.edu.repository.modelo.Empleado;
 
@@ -16,6 +18,11 @@ public interface ICiudadanoService {
 	public Empleado buscarPorCedula(String cedula);
 
 	public Ciudadano buscarPorCedulaCiu(String cedula);
+	
+	//Native Query
+	public List<Ciudadano> buscarPorApellido(String apellido);
+		
+	public  List<Ciudadano> buscarPorNombre(String nombre);
 	
 
 }

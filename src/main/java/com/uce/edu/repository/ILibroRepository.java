@@ -30,4 +30,13 @@ public interface ILibroRepository {
 	public Libro seleccionarPorTituloNamed(String titulo);
 	public List<Libro>seleccionarPorFechaNamed(LocalDate fechaPublicacion);
 	
+	
+	//NativeQuery
+	
+	public Libro encontrarPorTitulo(String  titulo);
+	
+	public List<Libro> encontrarPorEditorial(String editorial);
+	
+	public List<Libro> encontrarPorFechaPublicacion(LocalDate fechaPublicacion);
+	
 }

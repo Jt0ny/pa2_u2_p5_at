@@ -1,5 +1,7 @@
 package com.uce.edu.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +33,24 @@ public class AutorServiceImpl implements IAutorService{
 	public void eliminar(Integer id) {
 		this.autorRepository.borrar(id);
 		
+	}
+
+	@Override
+	public List<Autor> buscarPorNacionalidad(String nacionalidad) {
+		
+		return this.autorRepository.seleccionarPorNacionalidad(nacionalidad);
+	}
+
+	@Override
+	public List<Autor> buscarPorGenero(String genero) {
+		
+		return this.autorRepository.seleccionarPorGenero(genero);
+	}
+
+	@Override
+	public Autor buscarPorCedula(String cedula) {
+	
+		return this.autorRepository.seleccionarPorCedula(cedula);
 	}
 
 	

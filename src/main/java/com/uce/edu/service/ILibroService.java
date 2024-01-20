@@ -30,4 +30,13 @@ public interface ILibroService {
 	//NamedQuery
 	public Libro buscarPorTituloNamed(String titulo);
 	public List<Libro>buscarPorFechaNamed(LocalDate fechaPublicacion);
+	
+	//Native Query
+	
+	public Libro seleccionarPorTitulo(String  titulo);
+		
+	public List<Libro> seleccionarPorEditorial(String editorial);
+		
+	public List<Libro> seleccionarPorFechaPublicacion(LocalDate fechaPublicacion);
+		
 }

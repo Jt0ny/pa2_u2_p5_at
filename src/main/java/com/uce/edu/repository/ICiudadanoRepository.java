@@ -1,5 +1,7 @@
 package com.uce.edu.repository;
 
+import java.util.List;
+
 import com.uce.edu.repository.modelo.Ciudadano;
 import com.uce.edu.repository.modelo.Empleado;
 
@@ -17,5 +19,10 @@ public interface ICiudadanoRepository {
 	public Empleado seleccionarPorCedula(String cedula);
 
 	public Ciudadano seleccionarPorCedulaCiu(String cedula);
+	
+	//Native Query
+	public List<Ciudadano> seleccionarPorApellido(String apellido);
+	
+	public  List<Ciudadano> seleccionarPorNombre(String nombre);
 	
 }

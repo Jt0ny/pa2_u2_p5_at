@@ -1,5 +1,7 @@
 package com.uce.edu.repository;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.uce.edu.repository.modelo.Ciudadano;
@@ -56,6 +58,21 @@ public class CiudadanoRepositoryImpl  implements ICiudadanoRepository{
 		.createNativeQuery("select * from ciudadano c where c.ciud_cedula=:cedula",Ciudadano.class);
 		query.setParameter("cedula", cedula);
 		return (Ciudadano) query.getSingleResult();
+	}
+
+	//NativeQuery
+	@Override
+	public List<Ciudadano> seleccionarPorApellido(String apellido) {
+		Query query=this.entityManager.createNativeQuery("select * from ciudadano  c where c.ciud_apellido=:apellido",Ciudadano.class);
+		query.setParameter("apellido", apellido);
+		return (List<Ciudadano>)query.getResultList();
+	}
+
+	@Override
+	public List<Ciudadano> seleccionarPorNombre(String nombre) {
+		Query query=this.entityManager.createNativeQuery("select * from ciudadano  c where c.ciud_nombre=:nombre",Ciudadano.class);
+		query.setParameter("nombre", nombre);
+		return (List<Ciudadano>)query.getResultList();
 	}
 
 }

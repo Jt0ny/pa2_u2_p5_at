@@ -1,5 +1,7 @@
 package com.uce.edu.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,6 +48,18 @@ public class CiudadanoServiceImpl implements ICiudadanoService{
 	public Ciudadano buscarPorCedulaCiu(String cedula) {
 	
 		return this.ciudadanoRepository.seleccionarPorCedulaCiu(cedula);
+	}
+
+	@Override
+	public List<Ciudadano> buscarPorApellido(String apellido) {
+	
+		return this.ciudadanoRepository.seleccionarPorApellido(apellido);
+	}
+
+	@Override
+	public List<Ciudadano> buscarPorNombre(String nombre) {
+		
+		return this.ciudadanoRepository.seleccionarPorNombre(nombre);
 	}
 
 }

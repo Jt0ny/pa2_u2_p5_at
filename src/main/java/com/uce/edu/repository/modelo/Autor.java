@@ -25,8 +25,14 @@ public class Autor {
 	@Column(name="auto_nombre")
 	private String nombre;
 	
+	@Column(name="auto_cedula")
+	private String cedula;
+	
 	@Column(name="auto_nacionalidad")
 	private String nacionalidad;
+	
+	@Column(name="auto_genero")
+	private String genero;
 
 	@ManyToMany(mappedBy = "autores",cascade = CascadeType.ALL)
 	private Set<Libro> libros;
@@ -68,6 +74,22 @@ public class Autor {
 
 	public void setLibros(Set<Libro> libros) {
 		this.libros = libros;
+	}
+
+	public String getCedula() {
+		return cedula;
+	}
+
+	public void setCedula(String cedula) {
+		this.cedula = cedula;
+	}
+
+	public String getGenero() {
+		return genero;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
 	}
 	
 	

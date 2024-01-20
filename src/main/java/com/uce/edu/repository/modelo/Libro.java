@@ -31,6 +31,9 @@ public class Libro {
 	@Column(name="libr_titulo")
 	private String titulo;
 	
+	@Column(name="libr_editorial")
+	private String editorial;
+	
 	@Column(name="libr_fecha_publicacion")
 	private LocalDate fechaPublicacion;
 	
@@ -73,6 +76,12 @@ public class Libro {
 	}
 	public void setAutores(Set<Autor> autores) {
 		this.autores = autores;
+	}
+	public String getEditorial() {
+		return editorial;
+	}
+	public void setEditorial(String editorial) {
+		this.editorial = editorial;
 	}
 	
 	

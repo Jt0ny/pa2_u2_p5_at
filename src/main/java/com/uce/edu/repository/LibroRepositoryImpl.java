@@ -105,6 +105,28 @@ public class LibroRepositoryImpl implements ILibroRepository{
 		return query.getResultList();
 	}
 
+	//NativeQuery
+	@Override
+	public Libro encontrarPorTitulo(String titulo) {
+		Query query=this.entityManager.createNativeQuery("select * from libro l where l.libr_titulo=:titulo", Libro.class);
+		query.setParameter("titulo", titulo);
+		return (Libro) query.getSingleResult();
+	}
+
+	@Override
+	public List<Libro> encontrarPorEditorial(String editorial) {
+		Query query=this.entityManager.createNativeQuery("select * from libro l where l.libr_editorial=:editorial",Libro.class);
+		query.setParameter("editorial", editorial);
+		return (List<Libro>)query.getResultList();
+	}
+
+	@Override
+	public List<Libro> encontrarPorFechaPublicacion(LocalDate fechaPublicacion) {
+		Query query=this.entityManager.createNativeQuery("select * from libro l where l.libr_fecha_publicacion=:fecha",Libro.class);
+		query.setParameter("fecha", fechaPublicacion);
+		return (List<Libro>)query.getResultList();
+	}
+
 
 
 }
