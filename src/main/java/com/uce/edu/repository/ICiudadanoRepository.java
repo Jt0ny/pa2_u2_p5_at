@@ -24,5 +24,13 @@ public interface ICiudadanoRepository {
 	public List<Ciudadano> seleccionarPorApellido(String apellido);
 	
 	public  List<Ciudadano> seleccionarPorNombre(String nombre);
+	//Criterial API query
+	public Ciudadano seleccionarPorApellidoCAQ(String apellido);
 	
+	//funcionalidad cuando el ciudadano sea de pichincha busque por nombre
+	//cuando se de chimborazo lo busque por apellido
+	//cuando  no sea de ninguna de las 2 lo busque por cedula
+	public Ciudadano seleccionarPorCriteria(String nombre, String apellido,String cedula);
+	
+	public Ciudadano seleccionarPorCriteriaAndOr(String nombre, String apellido, String cedula);
 }

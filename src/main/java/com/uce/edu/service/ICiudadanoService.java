@@ -24,5 +24,11 @@ public interface ICiudadanoService {
 		
 	public  List<Ciudadano> buscarPorNombre(String nombre);
 	
+	//Criterial API query
+	public Ciudadano buscarPorApellidoCAQ(String apellido);
+	
+	public Ciudadano buscarPorCriteria(String nombre, String apellido,String cedula) ;
+		
+	public Ciudadano buscarPorCriteriaAndOr(String nombre, String apellido, String cedula);
 
 }
