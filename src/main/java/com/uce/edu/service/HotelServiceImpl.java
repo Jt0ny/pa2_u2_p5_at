@@ -1,5 +1,7 @@
 package com.uce.edu.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +36,18 @@ public class HotelServiceImpl implements IHotelService{
 	public void eliminar(Integer id) {
 		this.hotelRepository.eliminar(id);
 		
+	}
+
+	@Override
+	public List<Hotel> buscarHabitacionPorDireccion(String direccion) {
+		
+		return this.hotelRepository.seleccionarHabitacionPorDireccion(direccion);
+	}
+
+	@Override
+	public List<Hotel> buscarHabitacionPorNombre(String nombre) {
+		
+		return this.hotelRepository.seleccionarHabitacionPorNombre(nombre);
 	}
 
 }

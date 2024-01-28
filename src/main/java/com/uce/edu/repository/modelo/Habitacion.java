@@ -33,11 +33,16 @@ public class Habitacion {
 	@JoinColumn(name="habi_id_hotel")
 	private Hotel hotel;
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "Habitacion [id=" + id + ", numero=" + numero + ", clase=" + clase + "]";
-	}
+	}*/
 
+	@Override
+	public String toString() {
+		return "Habitacion [id=" + id + ", numero=" + numero + ", clase=" + clase + ", hotel=" + hotel + "]";
+	}
+	
 	//set y get
 	public Integer getId() {
 		return id;

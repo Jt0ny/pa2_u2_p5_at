@@ -1,28 +1,15 @@
 package com.uce.edu;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import com.uce.edu.repository.modelo.Autor;
-import com.uce.edu.repository.modelo.Autor2;
-import com.uce.edu.repository.modelo.AutorLibro;
-import com.uce.edu.repository.modelo.Ciudadano;
-import com.uce.edu.repository.modelo.Empleado;
-import com.uce.edu.repository.modelo.Libro;
-import com.uce.edu.repository.modelo.Libro2;
-import com.uce.edu.service.IAutorService;
-import com.uce.edu.service.ICiudadanoService;
-import com.uce.edu.service.IEmpleadoService;
-import com.uce.edu.service.ILibroService;
+import com.uce.edu.repository.modelo.Habitacion;
+import com.uce.edu.repository.modelo.Hotel;
+import com.uce.edu.service.IHabitacionService;
+import com.uce.edu.service.IHotelService;
 
 
 @SpringBootApplication
@@ -30,7 +17,9 @@ public class Pa2U2P5AtApplication implements CommandLineRunner{
 	
 
 	@Autowired
-	private ICiudadanoService ciudadanoService;
+	private IHabitacionService habitacionService;
+	@Autowired
+	private IHotelService hotelService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U2P5AtApplication.class, args);
@@ -38,20 +27,43 @@ public class Pa2U2P5AtApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		Ciudadano ciudadano=this.ciudadanoService.buscarPorApellidoCAQ("JA");
-		System.out.println(ciudadano);
+	
+		System.out.println("Inner Join");
 		
-		Ciudadano ciudadano2=this.ciudadanoService.buscarPorCriteria("Juan", "Valla", "1726787425");
-		System.out.println(ciudadano2);
+		List<Habitacion>lista=this.habitacionService.buscarHabitacionPorNumero("A2");
 		
-		Ciudadano ciudadano4=this.ciudadanoService.buscarPorCriteria("Juan", "Valla", "0526787425");
-		System.out.println(ciudadano4);
+		for(Habitacion h:lista) {
+			System.out.println(h);
+		}
 		
+		System.out.println("Right Join");
 		
-		System.out.println("Critaria API Query AND OR");
-		Ciudadano ciudadano3=this.ciudadanoService.buscarPorCriteriaAndOr("Juan", "Valla", "1726787425");
-		System.out.println(ciudadano3);
+		List<Habitacion>lista1=this.habitacionService.buscarHabitacionPorClase("Normal");
 		
+		for(Habitacion h1:lista1) {
+			System.out.println(h1);
+		}
+		
+		System.out.println("Left Join");
+		
+		List<Hotel>lista2=this.hotelService.buscarHabitacionPorDireccion("Quito");
+		
+		for(Hotel ho:lista2) {
+			System.out.println(ho);
+			for(Habitacion h:ho.getHabitaciones()) {
+				System.out.println(h);
+			}
+		}
+		
+		System.out.println("Full Join");
+		List<Hotel>lista3=this.hotelService.buscarHabitacionPorNombre("Risol");
+		for(Hotel ho:lista3) {
+			System.out.println(ho);
+			for(Habitacion h:ho.getHabitaciones()) {
+				System.out.println(h);
+			}
+		}
+	
 	}
 
 }
